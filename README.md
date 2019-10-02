@@ -1,1 +1,1 @@
-# Disable-RDP-Service
+# Disable-RDP-Service Powershell Script
