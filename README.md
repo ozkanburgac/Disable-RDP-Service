@@ -2,25 +2,3 @@
 Disable RDP Service.
 
 Please run the script as System User and Logged in User
-
-
-
-#To define a particular parameter, replace the 'parameterName' inside itsm.getParameter('parameterName') with that parameter's name
-import _winreg
-Key= r"SYSTEM\CurrentControlSet\Control\Terminal Server" 
-Sub_Key= "fDenyTSConnections" 
-Field= _winreg.REG_DWORD 
-value = 1 
-
-import os
-from _winreg import *
-try:
-    Key=r"SYSTEM\CurrentControlSet\Control\Terminal Server"
-    if not os.path.exists(Key):
-        key = _winreg.CreateKey(HKEY_LOCAL_MACHINE,Key)
-    Registrykey= OpenKey(HKEY_LOCAL_MACHINE,Key, 0,KEY_WRITE)
-    _winreg.SetValueEx(Registrykey,Sub_Key,0,Field,value)
-    CloseKey(Registrykey)
-    print "Successfully disabled RDP"
-except WindowsError:
-    print "Error"
